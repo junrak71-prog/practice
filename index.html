@@ -1,0 +1,497 @@
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼성 vs 하이닉스 성과급 대전 : 쉽게 이해하는 반도체 논쟁</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'sans-serif'],
+                    },
+                    colors: {
+                        samsung: {
+                            light: '#e8f0fe',
+                            DEFAULT: '#1428a0',
+                            dark: '#0a155a'
+                        },
+                        hynix: {
+                            light: '#fff0f3',
+                            DEFAULT: '#e60012',
+                            dark: '#99000c'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f8fafc;
+        }
+        .tab-active {
+            border-bottom: 3px solid #3b82f6;
+            color: #1d4ed8;
+            font-weight: 700;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .gradient-text-samsung {
+            background: linear-gradient(135deg, #1428a0, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-text-hynix {
+            background: linear-gradient(135deg, #e60012, #f43f5e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl">⚡</span>
+                <h1 class="text-xl md:text-2xl font-extrabold tracking-tight text-slate-900">
+                    <span class="gradient-text-samsung">삼성</span> vs <span class="gradient-text-hynix">하이닉스</span> 성과급 대전
+                </h1>
+            </div>
+            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-1 rounded-full">중학생도 쉬운 해설</span>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 flex-grow space-y-12 w-full">
+
+        <!-- Hero Intro Section -->
+        <section class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-6 md:p-10 text-white shadow-xl relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 max-w-3xl">
+                <div class="inline-block bg-blue-500/20 text-blue-300 text-xs font-bold px-3 py-1 rounded-full mb-4 border border-blue-400/30">
+                    🔥 요즘 뉴스에 계속 나오는 이유?
+                </div>
+                <h2 class="text-2xl md:text-4xl font-extrabold mb-4 leading-tight">
+                    "너희 회사는 성과급 몇 %야?"<br/>
+                    왜 삼성과 하이닉스 직원들의 반응이 갈릴까요?
+                </h2>
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                    같은 반도체 회사인데 왜 어디는 <strong class="text-amber-300 font-semibold">"보너스 잔치"</strong>를 하고, 어디는 <strong class="text-rose-300 font-semibold">"성과급 0원"</strong>이 되었을까요? 
+                    복잡해 보이는 기업 경제 뉴스를 **붕어빵 가게 이야기**와 함께 아주 쉽게 정리해 드릴게요!
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="#analogy" class="bg-white text-slate-900 hover:bg-slate-100 font-bold px-5 py-2.5 rounded-xl text-sm transition flex items-center gap-2">
+                        <span>🐟 붕어빵 비유로 이해하기</span>
+                    </a>
+                    <a href="#simulator" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition flex items-center gap-2">
+                        <span>🧮 성과급 계산해보기</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. Easy Analogy Section -->
+        <section id="analogy" class="scroll-mt-20">
+            <div class="text-center mb-8">
+                <span class="text-indigo-600 font-bold text-sm tracking-wider uppercase">Easy Concept</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mt-1">1. 붕어빵 가게로 쉽게 보는 성과급 공식</h3>
+                <p class="text-slate-600 text-sm mt-2">두 회사의 성과급 계산 규칙이 완전히 달라요!</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Hynix Box -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-rose-500 shadow-md hover:shadow-lg transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 font-bold flex items-center justify-center text-lg">
+                                🔴
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-lg text-slate-900">SK하이닉스 방식</h4>
+                                <span class="text-xs text-rose-600 font-semibold">영업이익 연동제</span>
+                            </div>
+                        </div>
+                        <span class="text-xs bg-rose-50 text-rose-700 px-2.5 py-1 rounded-md font-medium">단순 & 투명</span>
+                    </div>
+
+                    <div class="bg-rose-50/50 rounded-xl p-4 mb-4 border border-rose-100">
+                        <p class="text-sm text-slate-700 font-medium mb-2">🏪 <strong>붕어빵 가게 상황:</strong></p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            "재료비, 세금 다 빼고 순수하게 **손에 쥐어든 남은 돈(영업이익)**의 10%를 무조건 직원들에게 나눈다!"
+                        </p>
+                    </div>
+
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-emerald-500 mt-0.5"></i>
+                            <span><strong>장점:</strong> 장사가 잘되면 버는 만큼 바로 직원의 보너스도 쑥쑥 커져요.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-emerald-500 mt-0.5"></i>
+                            <span><strong>특징:</strong> 계산법이 쉬워서 직원들이 "올해 내 보너스는 얼마쯤 되겠구나" 미리 알기 쉽습니다.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Samsung Box -->
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-blue-600 shadow-md hover:shadow-lg transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 font-bold flex items-center justify-center text-lg">
+                                🔵
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-lg text-slate-900">삼성전자 방식</h4>
+                                <span class="text-xs text-blue-600 font-semibold">EVA (경제적 부가가치) 방식</span>
+                            </div>
+                        </div>
+                        <span class="text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md font-medium">깐깐한 산정식</span>
+                    </div>
+
+                    <div class="bg-blue-50/50 rounded-xl p-4 mb-4 border border-blue-100">
+                        <p class="text-sm text-slate-700 font-medium mb-2">🏪 <strong>붕어빵 가게 상황:</strong></p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            "돈을 벌었어도 **기계값 감가상각, 기회비용, 투자 비용(자본비용)**을 더 까다롭게 뺀 뒤 진~짜 남은 알짜 기여분에서 계산한다!"
+                        </p>
+                    </div>
+
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-exclamation-triangle text-amber-500 mt-0.5"></i>
+                            <span><strong>특징:</strong> 영업이익이 흑자(플러스)여도, 들어간 투자비가 너무 많으면 성과급 산정 기준에서 <strong>0원</strong>이 될 수 있어요.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-info text-blue-500 mt-0.5"></i>
+                            <span><strong>이슈:</strong> 정확한 산정식 공개 요구가 직원들 사이에서 뜨겁습니다.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Key Issues Interactive Explorer -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-200">
+            <div class="text-center mb-8">
+                <span class="text-indigo-600 font-bold text-sm tracking-wider uppercase">Key Issues Breakdown</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mt-1">2. 성과급 논란, 핵심 논점 4가지!</h3>
+                <p class="text-slate-600 text-sm mt-2">버튼을 클릭해서 논점별 세부 내용을 확인해보세요.</p>
+            </div>
+
+            <!-- Issue Tabs -->
+            <div class="flex flex-wrap justify-center border-b border-slate-200 gap-2 mb-6" id="issueTabs">
+                <button onclick="switchTab(0)" id="tab-0" class="tab-btn px-4 py-2.5 text-sm font-semibold text-slate-600 hover:text-indigo-600 transition tab-active">
+                    1️⃣ HBM 반도체 역전극
+                </button>
+                <button onclick="switchTab(1)" id="tab-1" class="tab-btn px-4 py-2.5 text-sm font-semibold text-slate-600 hover:text-indigo-600 transition">
+                    2️⃣ 투명성과 산정 공식
+                </button>
+                <button onclick="switchTab(2)" id="tab-2" class="tab-btn px-4 py-2.5 text-sm font-semibold text-slate-600 hover:text-indigo-600 transition">
+                    3️⃣ 상대적 박탈감과 사기
+                </button>
+                <button onclick="switchTab(3)" id="tab-3" class="tab-btn px-4 py-2.5 text-sm font-semibold text-slate-600 hover:text-indigo-600 transition">
+                    4️⃣ 인재 유출과 미래 경쟁력
+                </button>
+            </div>
+
+            <!-- Tab Content Containers -->
+            <div id="tabContent" class="min-h-[220px]">
+                <!-- Tab 0 -->
+                <div id="content-0" class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-amber-100 text-amber-700 rounded-2xl text-2xl hidden sm:block">🧠</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">인공지능(AI) 바람타고 태어난 Super Star 'HBM'</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                                과거에는 삼성이 메모리 반도체 절대강자였습니다. 하지만 AI 시대가 오면서 고성능 메모리인 **HBM(고대역폭 메모리)** 수요가 폭발했고, SK하이닉스가 엔비디아(NVIDIA)에 HBM을 거의 독점 공급하면서 **엄청난 대박**을 터뜨렸습니다!
+                            </p>
+                            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1">
+                                <p>📌 <strong>결과:</strong> SK하이닉스는 사상 최대실적을 기록하며 직원들에게 <strong>연봉의 50%가 넘는 역대급 성과급</strong>을 지급했지만, 삼성 DS(반도체) 부문은 HBM 주도권을 놓치며 적자와 실적 부진으로 성과급이 대폭 줄어들었습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 1 -->
+                <div id="content-1" class="hidden space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-blue-100 text-blue-700 rounded-2xl text-2xl hidden sm:block">🔍</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">"내가 일해 번 돈, 계산 공식을 공개하세요!"</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                                젊은 젊은 직원들(MZ 세대)을 중심으로 <strong>"회사가 돈을 얼마나 벌었고 그 중 성과급이 어떻게 계산되는지 투명하게 투명식(EVA 산정식)을 공개하라"</strong>는 목소리가 높아졌습니다.
+                            </p>
+                            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1">
+                                <p>📌 <strong>하이닉스:</strong> "영업이익의 10% 지급"으로 깔끔하게 공개되어 공감대가 형성됨.</p>
+                                <p>📌 <strong>삼성:</strong> 복잡한 경제지표(EVA)로 계산되어 직원이 스스로 성과급을 예측하기 어려워 갈등 발생.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2 -->
+                <div id="content-2" class="hidden space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-rose-100 text-rose-700 rounded-2xl text-2xl hidden sm:block">💔</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">한 건물 아래, 서로 다른 성과급?</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                                삼성전자 내부에서도 사업부별로 성과급 차이가 극명했습니다. 스마트폰/가전(DX 부문)은 최대 50%를 받는 동안, 반도체(DS 부문)는 성과급 비율이 0%에 가깝게 떨어지자 사기가 크게 떨어졌습니다.
+                            </p>
+                            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1">
+                                <p>📌 <strong>핵심 질문:</strong> "반도체 업황 침체는 직원의 잘못인가, 경영진의 전략적 판단 미스인가?"에 대한 공정성 논란이 불거졌습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3 -->
+                <div id="content-3" class="hidden space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-emerald-100 text-emerald-700 rounded-2xl text-2xl hidden sm:block">🏃</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">성과급은 단순 보너스가 아니라 '인재 보존 무기'</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                                최고의 석·박사 연구원들과 엔지니어들은 보상과 성과급이 정당한 곳으로 이직합니다. 삼성의 성과급 감소와 하이닉스의 역대급 보상은 **핵심 반도체 인재들의 하이닉스 및 해외 기업 이직 열풍**으로 이어졌습니다.
+                            </p>
+                            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1">
+                                <p>📌 <strong>시사점:</strong> 글로벌 국가간 반도체 전쟁 시대에서 성과급은 곧 **'국가 첨단 기술 인재 유출을 막는 안전장치'** 역할을 합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Interactive Bonus Simulator -->
+        <section id="simulator" class="scroll-mt-20 bg-slate-900 text-white rounded-3xl p-6 md:p-8 shadow-xl">
+            <div class="text-center mb-6">
+                <span class="text-indigo-400 font-bold text-sm tracking-wider uppercase">Interactive Simulator</span>
+                <h3 class="text-2xl md:text-3xl font-bold mt-1">3. 내가 만약 사장이라면? 성과급 체험기</h3>
+                <p class="text-slate-400 text-sm mt-1">가상의 영업이익을 슬라이더로 움직여보며 두 방식의 차이를 눈으로 확인하세요!</p>
+            </div>
+
+            <!-- Control Box -->
+            <div class="max-w-xl mx-auto bg-slate-800/80 p-5 rounded-2xl border border-slate-700 mb-8">
+                <label class="block text-sm font-semibold mb-2 text-slate-200 flex justify-between">
+                    <span>🏢 가상의 올해 사업부 영업이익</span>
+                    <span id="profitDisplay" class="text-amber-400 font-bold text-lg">5조 원</span>
+                </label>
+                <input type="range" id="profitSlider" min="0" max="20" step="1" value="5" 
+                       class="w-full h-2.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                       oninput="updateSimulator(this.value)">
+                <div class="flex justify-between text-xs text-slate-400 mt-2">
+                    <span>0원 (적자/본전)</span>
+                    <span>10조 원</span>
+                    <span>20조 원 (대박)</span>
+                </div>
+            </div>
+
+            <!-- Comparison Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Hynix Simulated Output -->
+                <div class="bg-slate-800 rounded-2xl p-5 border border-rose-500/30 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-rose-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg">영업이익 10% 연동</div>
+                    <h4 class="text-slate-300 text-sm font-semibold mb-1">SK하이닉스 방식 보너스</h4>
+                    <div class="text-3xl font-extrabold text-rose-400 my-2" id="hynixBonusText">연봉의 ~30%</div>
+                    <p class="text-xs text-slate-400 leading-relaxed" id="hynixDesc">
+                        영업이익이 늘어나는 만큼 정직하게 직원의 보너스 비율도 시원하게 상승합니다!
+                    </p>
+                    <div class="mt-4 bg-slate-900/60 p-3 rounded-lg text-xs text-slate-300">
+                        <div class="flex justify-between mb-1">
+                            <span>예상 만족도:</span>
+                            <span id="hynixSatisfaction" class="font-bold text-emerald-400">😊 높음</span>
+                        </div>
+                        <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                            <div id="hynixBar" class="bg-rose-500 h-full transition-all duration-300" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Samsung Simulated Output -->
+                <div class="bg-slate-800 rounded-2xl p-5 border border-blue-500/30 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg">자본비용(EVA) 차감</div>
+                    <h4 class="text-slate-300 text-sm font-semibold mb-1">삼성전자 방식 보너스</h4>
+                    <div class="text-3xl font-extrabold text-blue-400 my-2" id="samsungBonusText">연봉의 ~10%</div>
+                    <p class="text-xs text-slate-400 leading-relaxed" id="samsungDesc">
+                        영업이익이 나도 막대한 공장/설비 투자비용(자본비용)을 차감하기 때문에 성과급이 비교적 낮거나 차감될 수 있습니다.
+                    </p>
+                    <div class="mt-4 bg-slate-900/60 p-3 rounded-lg text-xs text-slate-300">
+                        <div class="flex justify-between mb-1">
+                            <span>예상 만족도:</span>
+                            <span id="samsungSatisfaction" class="font-bold text-amber-400">😐 보통</span>
+                        </div>
+                        <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                            <div id="samsungBar" class="bg-blue-500 h-full transition-all duration-300" style="width: 30%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Quick Comprehension Quiz -->
+        <section class="glass-card rounded-3xl p-6 md:p-8 shadow-sm border border-slate-200">
+            <div class="text-center mb-8">
+                <span class="text-indigo-600 font-bold text-sm tracking-wider uppercase">Quiz Time</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mt-1">4. 이해도 체크 퀴즈! 🎯</h3>
+                <p class="text-slate-600 text-sm mt-1">오늘 배운 내용을 간단히 복습해볼까요?</p>
+            </div>
+
+            <div id="quizContainer" class="max-w-2xl mx-auto space-y-6">
+                <!-- Q1 -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <p class="font-bold text-slate-800 text-sm">Q1. SK하이닉스가 성과급을 많이 줄 수 있었던 가장 결정적인 AI 반도체 제품 이름은?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <button onclick="checkQuiz(1, false, this)" class="q-btn border border-slate-300 p-2.5 rounded-xl hover:bg-slate-50 text-left font-medium transition">① SSD 카드</button>
+                        <button onclick="checkQuiz(1, true, this)" class="q-btn border border-slate-300 p-2.5 rounded-xl hover:bg-slate-50 text-left font-medium transition">② HBM (고대역폭 메모리)</button>
+                        <button onclick="checkQuiz(1, false, this)" class="q-btn border border-slate-300 p-2.5 rounded-xl hover:bg-slate-50 text-left font-medium transition">③ USB 메모리</button>
+                        <button onclick="checkQuiz(1, false, this)" class="q-btn border border-slate-300 p-2.5 rounded-xl hover:bg-slate-50 text-left font-medium transition">④ 스마트폰 AP</button>
+                    </div>
+                    <div id="quizResult1" class="text-xs font-bold hidden mt-2"></div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <p class="font-bold text-slate-800 text-sm">Q2. 삼성전자 직원들이 성과급 관련해서 회사에 요구하는 가장 대표적인 주장은?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <button onclick="checkQuiz(2, false, this)" class="q-btn border border-slate-300 p-2.5 rounded-xl hover:bg-slate-50 text-left font-medium transition">① 휴가를 1년으로 늘려달라</button>
+                        <button onclick="checkQuiz(2, true, this)" class="q-btn border border-slate-300 p-2.5 rounded-xl hover:bg-slate-50 text-left font-medium transition">② 성과급 산정식(EVA)을 투명하게 공개하라</button>
+                        <button onclick="checkQuiz(2, false, this)" class="q-btn border border-slate-300 p-2.5 rounded-xl hover:bg-slate-50 text-left font-medium transition">③ 출퇴근 시간을 없애달라</button>
+                        <button onclick="checkQuiz(2, false, this)" class="q-btn border border-slate-300 p-2.5 rounded-xl hover:bg-slate-50 text-left font-medium transition">④ 스마트폰을 공짜로 달라는 요구</button>
+                    </div>
+                    <div id="quizResult2" class="text-xs font-bold hidden mt-2"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 mt-12">
+        <div class="max-w-6xl mx-auto px-4 text-center space-y-2">
+            <p class="font-semibold text-slate-300">💡 쉽게 읽는 반도체 경제 가이드</p>
+            <p>본 앱은 학생 및 일반인의 이해를 돕기 위해 기업 성과급 이슈의 핵심 개념을 요약·시뮬레이션한 학습용 컨텐츠입니다.</p>
+            <p class="text-slate-500">© 2026 Interactive Economic Learning App</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching logic
+        function switchTab(index) {
+            // Reset tab buttons
+            for (let i = 0; i < 4; i++) {
+                const tabBtn = document.getElementById(`tab-${i}`);
+                const content = document.getElementById(`content-${i}`);
+                
+                if (i === index) {
+                    tabBtn.classList.add('tab-active');
+                    content.classList.remove('hidden');
+                } else {
+                    tabBtn.classList.remove('tab-active');
+                    content.classList.add('hidden');
+                }
+            }
+        }
+
+        // Simulator Logic
+        function updateSimulator(profit) {
+            const profitNum = parseInt(profit);
+            document.getElementById('profitDisplay').innerText = `${profitNum}조 원`;
+
+            // Hynix simulation
+            let hynixBonus = 0;
+            let hynixSat = '😐 보통';
+            let hynixSatColor = 'text-amber-400';
+            
+            if (profitNum === 0) {
+                hynixBonus = 0;
+                hynixSat = '😢 없음';
+                hynixSatColor = 'text-rose-400';
+            } else if (profitNum <= 5) {
+                hynixBonus = profitNum * 6; // up to 30%
+                hynixSat = '🙂 양호';
+                hynixSatColor = 'text-blue-400';
+            } else if (profitNum <= 12) {
+                hynixBonus = 30 + (profitNum - 5) * 3; 
+                hynixSat = '😊 높음';
+                hynixSatColor = 'text-emerald-400';
+            } else {
+                hynixBonus = Math.min(60, 50 + (profitNum - 12) * 1.25);
+                hynixSat = '🔥 역대급 대박!';
+                hynixSatColor = 'text-rose-400';
+            }
+
+            // Samsung simulation (EVA deducts capital cost approx 4~6 trillion)
+            let samsungBonus = 0;
+            let samsungSat = '😐 보통';
+            let samsungSatColor = 'text-amber-400';
+
+            const evaProfit = profitNum - 4; // deduct capital costs
+            if (evaProfit <= 0) {
+                samsungBonus = 0;
+                samsungSat = '😱 0원 (사기 저하)';
+                samsungSatColor = 'text-rose-400';
+            } else if (evaProfit <= 5) {
+                samsungBonus = evaProfit * 5;
+                samsungSat = '😐 보통';
+                samsungSatColor = 'text-amber-400';
+            } else {
+                samsungBonus = Math.min(50, 25 + (evaProfit - 5) * 2.5);
+                samsungSat = '😊 높음';
+                samsungSatColor = 'text-emerald-400';
+            }
+
+            // DOM Updates
+            document.getElementById('hynixBonusText').innerText = hynixBonus === 0 ? '0%' : `연봉의 ~${Math.round(hynixBonus)}%`;
+            document.getElementById('hynixBar').style.width = `${Math.min(100, hynixBonus * 1.8)}%`;
+            const hSatEl = document.getElementById('hynixSatisfaction');
+            hSatEl.innerText = hynixSat;
+            hSatEl.className = `font-bold ${hynixSatColor}`;
+
+            document.getElementById('samsungBonusText').innerText = samsungBonus === 0 ? '0%' : `연봉의 ~${Math.round(samsungBonus)}%`;
+            document.getElementById('samsungBar').style.width = `${Math.min(100, samsungBonus * 1.8)}%`;
+            const sSatEl = document.getElementById('samsungSatisfaction');
+            sSatEl.innerText = samsungSat;
+            sSatEl.className = `font-bold ${samsungSatColor}`;
+        }
+
+        // Quiz checking
+        function checkQuiz(qNum, isCorrect, btn) {
+            const parent = btn.parentElement;
+            const buttons = parent.querySelectorAll('.q-btn');
+            const resultDiv = document.getElementById(`quizResult${qNum}`);
+
+            buttons.forEach(b => {
+                b.classList.remove('bg-emerald-100', 'border-emerald-500', 'bg-rose-100', 'border-rose-500');
+                b.disabled = true;
+            });
+
+            if (isCorrect) {
+                btn.classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900');
+                resultDiv.innerText = '⭕ 정답입니다! 아주 잘 이해하셨네요!';
+                resultDiv.className = 'text-xs font-bold text-emerald-600 mt-2 block';
+            } else {
+                btn.classList.add('bg-rose-100', 'border-rose-500', 'text-rose-900');
+                resultDiv.innerText = '❌ 아쉬워요! 다시 한번 위 내용을 살펴보세요.';
+                resultDiv.className = 'text-xs font-bold text-rose-600 mt-2 block';
+            }
+        }
+
+        // Initialize default simulator values on load
+        window.onload = function() {
+            updateSimulator(5);
+        };
+    </script>
+</body>
+</html>
+```
