@@ -1,0 +1,416 @@
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBM 칩 코너 라운딩과 Z축 박리 방지 특허 발표 (쉬운 해설)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Pretendard', sans-serif; background-color: #090d16; color: #f1f5f9; }
+        .slide { display: none; }
+        .slide.active { display: flex; }
+        .glow-blue { filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.4)); }
+        .glow-red { filter: drop-shadow(0 0 15px rgba(239, 68, 68, 0.5)); }
+        .glow-green { filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.5)); }
+    </style>
+</head>
+<body class="h-screen w-screen overflow-hidden flex flex-col justify-between p-4 md:p-8">
+
+    <!-- Top Navigation Header -->
+    <header class="flex justify-between items-center border-b border-slate-800 pb-4">
+        <div class="flex items-center gap-3">
+            <span class="px-3 py-1 bg-indigo-600 text-white font-bold text-xs rounded-full">PATENT PRESENTATION</span>
+            <h1 class="text-lg md:text-xl font-extrabold text-white tracking-tight">HBM 칩 코너 라운딩 & Z축 박리 방지 특허</h1>
+        </div>
+        <div class="text-xs text-slate-400">
+            슬라이드 <span id="currentSlideNum" class="text-indigo-400 font-bold text-base">1</span> / <span id="totalSlideNum">7</span>
+        </div>
+    </header>
+
+    <!-- Main Slide Content Container -->
+    <main class="flex-1 flex justify-center items-center py-6">
+        
+        <!-- SLIDE 1: Title & Overview -->
+        <div class="slide active flex-col justify-center items-center text-center space-y-6 max-w-4xl mx-auto">
+            <div class="inline-block px-4 py-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-full text-sm font-semibold mb-2">
+                🎓 중학생도 한눈에 이해하는 반도체 물리학
+            </div>
+            <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">
+                네모난 칩의 모서리를 <span class="text-emerald-400">둥글게</span> 깎으면,<br>
+                왜 <span class="text-indigo-400">위아래(Z축) 찢어짐</span>이 막힐까?
+            </h2>
+            <p class="text-slate-400 text-base md:text-lg max-w-2xl leading-relaxed">
+                HBM 반도체 적층 시 발생하는 '모서리 계면 박리(Delamination)'의 수리역학적 원리와 이를 이용한 차세대 패키징 특허 출원 아이디어 발표
+            </p>
+            
+            <div class="pt-6 grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl">
+                <div class="p-4 bg-slate-900/80 border border-slate-800 rounded-2xl text-left">
+                    <div class="text-2xl mb-1">🥞</div>
+                    <div class="text-sm font-bold text-white">1. 팬케이크 적층</div>
+                    <div class="text-xs text-slate-400 mt-1">얇은 반도체 칩을 위아래로 12층 넘게 쌓는 HBM</div>
+                </div>
+                <div class="p-4 bg-slate-900/80 border border-slate-800 rounded-2xl text-left">
+                    <div class="text-2xl mb-1">💥</div>
+                    <div class="text-sm font-bold text-white">2. 직각 모서리의 문제</div>
+                    <div class="text-xs text-slate-400 mt-1">식으면서 모서리 꼭짓점이 위아래 칩을 뜯어냄</div>
+                </div>
+                <div class="p-4 bg-slate-900/80 border border-slate-800 rounded-2xl text-left">
+                    <div class="text-2xl mb-1">🛡️</div>
+                    <div class="text-sm font-bold text-white">3. 라운딩 특허 아이디어</div>
+                    <div class="text-xs text-slate-400 mt-1">곡선으로 힘을 분산시키고 앵커로 꽉 잡는 기술</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: Analogy - Sticker & Sandwich -->
+        <div class="slide flex-col justify-center items-center text-left space-y-6 max-w-5xl mx-auto w-full">
+            <div class="text-xs text-indigo-400 font-bold uppercase tracking-wider">Slide 02 · 쉬운 비유로 알아보기</div>
+            <h3 class="text-2xl md:text-3xl font-bold text-white">
+                💡 스티커를 뗄 때 어디부터 떨어질까요?
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                <!-- Analogy 1 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="text-amber-400 font-bold text-sm mb-2">📌 스티커 모서리 비유</div>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            네모난 스티커나 테이프를 때어낼 때, 항상 <b>'뾰족한 4개 모서리 끝'</b>부터 손톱으로 살짝 들쳐서 떼어냅니다. 
+                            반대로 스티커 모서리가 동그랗게 잘려있으면 잘 떨어지지 않죠!
+                        </p>
+                    </div>
+                    <!-- SVG Visual -->
+                    <div class="bg-slate-950 p-4 rounded-xl flex justify-center items-center h-40">
+                        <svg width="240" height="100" viewBox="0 0 240 100">
+                            <!-- Square sticker peeling -->
+                            <rect x="20" y="30" width="80" height="50" rx="0" fill="#334155" stroke="#ef4444" stroke-width="2"/>
+                            <path d="M 20 30 Q 15 15 10 10" stroke="#ef4444" stroke-width="3" fill="none" class="glow-red"/>
+                            <text x="20" y="90" fill="#fca5a5" font-size="10">뾰족한 모서리 ➔ 손쉽게 잘 뜯어짐</text>
+                            
+                            <!-- Round sticker safe -->
+                            <rect x="140" y="30" width="80" height="50" rx="15" fill="#334155" stroke="#10b981" stroke-width="2"/>
+                            <text x="140" y="90" fill="#6ee7b7" font-size="10">둥근 모서리 ➔ 들뜸 없이 짱짱함</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Analogy 2 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="text-indigo-400 font-bold text-sm mb-2">📌 HBM 반도체의 상황</div>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            HBM은 얇은 실리콘 칩을 위아래로 풀(NCF)을 바르고 뜨겁게 붙인 뒤 식힙니다. 
+                            식으면서 칩이 오그라들 때, <b>모서리 끝점이 상부 칩을 위로 들어 올리는 스티커 효과</b>가 발생합니다!
+                        </p>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-xl flex justify-center items-center h-40">
+                        <svg width="240" height="100" viewBox="0 0 240 100">
+                            <!-- Bottom die -->
+                            <rect x="30" y="60" width="180" height="20" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+                            <text x="90" y="74" fill="#94a3b8" font-size="10">하부 실리콘 칩</text>
+                            <!-- Top die warping up -->
+                            <path d="M 30 40 L 190 40 L 205 25" stroke="#ef4444" stroke-width="3" fill="none" class="glow-red"/>
+                            <rect x="30" y="25" width="160" height="15" fill="#334155"/>
+                            <!-- Red Arrow -->
+                            <line x1="200" y1="40" x2="200" y2="15" stroke="#ef4444" stroke-width="2.5" marker-end="url(#arrow)"/>
+                            <text x="135" y="15" fill="#fca5a5" font-size="10" font-weight="bold">Z축 찢어짐 힘!</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: Mechanics of Sharp Corners -->
+        <div class="slide flex-col justify-center items-center text-left space-y-6 max-w-5xl mx-auto w-full">
+            <div class="text-xs text-red-400 font-bold uppercase tracking-wider">Slide 03 · 원인 분석</div>
+            <h3 class="text-2xl md:text-3xl font-bold text-white">
+                🔴 왜 90° 직각 모서리는 위아래를 찢어발길까요?
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <div class="md:col-span-6 space-y-4">
+                    <div class="p-4 bg-red-950/20 border border-red-500/30 rounded-xl space-y-2">
+                        <h4 class="font-bold text-red-400 text-sm">1. 응력 특이점 (Stress Singularity)</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            가로(X축)로 줄어드는 힘과 세로(Y축)로 줄어드는 힘이 직각 모서리의 <b>'단 하나의 무한소 점(Point)'</b>에서 충돌합니다.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-red-950/20 border border-red-500/30 rounded-xl space-y-2">
+                        <h4 class="font-bold text-red-400 text-sm">2. Z축 수직 들림 힘(Peeling Force)으로 변환</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            수평으로 부딪힌 힘이 더 이상 갈 곳이 없자, 상부 칩을 위쪽(Z축)으로 <b>수직으로 꺾어 뜯어 올리는 지렛대 모멘트</b>로 변합니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SVG Diagram -->
+                <div class="md:col-span-6 bg-slate-950 border border-slate-800 rounded-2xl p-4 flex flex-col items-center justify-center">
+                    <svg width="300" height="200" viewBox="0 0 300 200">
+                        <defs>
+                            <marker id="redArrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#ef4444"/>
+                            </marker>
+                        </defs>
+                        <!-- Chip Corner View -->
+                        <path d="M 40 160 L 220 160 L 220 40 L 40 40 Z" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+                        <!-- Highlight sharp corner -->
+                        <circle cx="220" cy="40" r="12" fill="#ef4444" fill-opacity="0.3" class="animate-pulse"/>
+                        <circle cx="220" cy="40" r="4" fill="#ef4444"/>
+                        <!-- Force vectors -->
+                        <line x1="160" y1="40" x2="210" y2="40" stroke="#f59e0b" stroke-width="3" marker-end="url(#redArrow)"/>
+                        <line x1="220" y1="100" x2="220" y2="50" stroke="#f59e0b" stroke-width="3" marker-end="url(#redArrow)"/>
+                        <!-- Z Force popping UP -->
+                        <line x1="220" y1="40" x2="250" y2="15" stroke="#ef4444" stroke-width="4" marker-end="url(#redArrow)" class="glow-red"/>
+                        
+                        <text x="120" y="30" fill="#f59e0b" font-size="11" font-weight="bold">X축 수축력</text>
+                        <text x="230" y="100" fill="#f59e0b" font-size="11" font-weight="bold">Y축 수축력</text>
+                        <text x="210" y="15" fill="#ef4444" font-size="12" font-weight="black">💥 Z축 찢어짐(Peeling)</text>
+                    </svg>
+                    <span class="text-[11px] text-slate-500 mt-2">직각 모서리 한 점에 힘이 고여 Z축으로 튀어나감</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: The Magic of Rounding -->
+        <div class="slide flex-col justify-center items-center text-left space-y-6 max-w-5xl mx-auto w-full">
+            <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Slide 04 · 해법 원리</div>
+            <h3 class="text-2xl md:text-3xl font-bold text-white">
+                🟢 라운드(Round) 가공을 하면 수직 힘이 사라집니다!
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <div class="md:col-span-6 space-y-4">
+                    <div class="p-4 bg-emerald-950/20 border border-emerald-500/30 rounded-xl space-y-2">
+                        <h4 class="font-bold text-emerald-400 text-sm">1. 호(Arc)를 따라 부드럽게 흐르는 응력</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            모서리가 부드러운 곡선($R$)이 되면, X축과 Y축 힘이 모서리를 따라 <b>유선형으로 부드럽게 흘러 나가며 회전</b>합니다.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-emerald-950/20 border border-emerald-500/30 rounded-xl space-y-2">
+                        <h4 class="font-bold text-emerald-400 text-sm">2. Z축 Peeling 응력 Peak 65% 급감</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            한 점에 고이던 힘이 곡선 면적 전체로 분산되므로, 위아래 칩을 수직으로 뜯어 올리던 Peeling Force가 안전 수준 이하로 떨어집니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SVG Diagram -->
+                <div class="md:col-span-6 bg-slate-950 border border-slate-800 rounded-2xl p-4 flex flex-col items-center justify-center">
+                    <svg width="300" height="200" viewBox="0 0 300 200">
+                        <defs>
+                            <marker id="greenArrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"/>
+                            </marker>
+                        </defs>
+                        <!-- Round Corner Chip View -->
+                        <path d="M 40 160 L 220 160 L 220 90 A 50 50 0 0 0 170 40 L 40 40 Z" fill="#1e293b" stroke="#10b981" stroke-width="2.5" class="glow-green"/>
+                        
+                        <!-- Curved Flow Arrow -->
+                        <path d="M 215 110 A 45 45 0 0 0 170 45" stroke="#10b981" stroke-width="4" fill="none" marker-end="url(#greenArrow)"/>
+                        
+                        <text x="100" y="110" fill="#34d399" font-size="13" font-weight="bold">✨ 유선형 분산 (Safe)</text>
+                        <text x="140" y="30" fill="#a7f3d0" font-size="10">응력이 튀지 않고 흘러감</text>
+                    </svg>
+                    <span class="text-[11px] text-slate-500 mt-2">곡선 가공으로 응력 특이점 완벽 소멸</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: NCF Glue & Void Zero -->
+        <div class="slide flex-col justify-center items-center text-left space-y-6 max-w-5xl mx-auto w-full">
+            <div class="text-xs text-indigo-400 font-bold uppercase tracking-wider">Slide 05 · 부가적 이점</div>
+            <h3 class="text-2xl md:text-3xl font-bold text-white">
+                🧪 비전도성 필름(NCF) 접착 풀이 빈틈없이 꽉 채워집니다
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                <!-- Sharp corner resin problem -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
+                    <div class="text-red-400 font-bold text-sm">❌ 직각 모서리: 공극(Void) 발생</div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        열압착 시 칩 사이의 레진 풀이 밖으로 밀려 나갈 때, 직각 코너에서는 와류가 생겨 모서리 꼭짓점 끝까지 못 채워지고 <b>빈 구멍(Void)</b>이 남습니다.
+                    </p>
+                    <div class="bg-slate-950 p-3 rounded-xl flex justify-center">
+                        <svg width="200" height="90" viewBox="0 0 200 90">
+                            <rect x="20" y="20" width="140" height="50" fill="#1e293b" stroke="#475569"/>
+                            <!-- Resin incomplete -->
+                            <path d="M 160 20 Q 145 35 160 70 L 20 70 L 20 20 Z" fill="rgba(16, 185, 129, 0.3)"/>
+                            <!-- Void bubble -->
+                            <circle cx="152" cy="28" r="7" fill="#ef4444" class="animate-ping"/>
+                            <circle cx="152" cy="28" r="7" fill="#ef4444"/>
+                            <text x="125" y="48" fill="#fca5a5" font-size="9" font-weight="bold">Void 발생 (접착력 0)</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Round corner resin perfection -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
+                    <div class="text-emerald-400 font-bold text-sm">✅ 라운드 모서리: 100% 밀착 충전</div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        모서리가 부드러우면 레진 풀이 모서리 끝을 매끄럽게 감싸면서(Fillet) 공극 없이 **상하 계면 전체를 짱짱하게 결착**시켜 줍니다.
+                    </p>
+                    <div class="bg-slate-950 p-3 rounded-xl flex justify-center">
+                        <svg width="200" height="90" viewBox="0 0 200 90">
+                            <path d="M 20 20 L 130 20 A 30 30 0 0 1 160 50 L 160 70 L 20 70 Z" fill="#1e293b" stroke="#10b981"/>
+                            <!-- Resin perfect coverage -->
+                            <path d="M 20 20 L 135 20 A 35 35 0 0 1 165 55 L 165 70 L 20 70 Z" fill="rgba(16, 185, 129, 0.5)"/>
+                            <text x="60" y="50" fill="#34d399" font-size="10" font-weight="bold">✨ 완전 충전 (Void Zero)</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Patent Ideas -->
+        <div class="slide flex-col justify-center items-center text-left space-y-6 max-w-5xl mx-auto w-full">
+            <div class="text-xs text-amber-400 font-bold uppercase tracking-wider">Slide 06 · 특허 청구 핵심 아이디어</div>
+            <h3 class="text-2xl md:text-3xl font-bold text-white">
+                🚀 독점적 권리 확보를 위한 3대 독창적 구상
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-3">
+                    <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">1</div>
+                    <h4 class="font-bold text-white text-sm">호(Arc)형 더미 범프 배치</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        라운드 모서리 안쪽에 범프를 직선이 아닌 **곡선 동심원 호(Arc) 모양**으로 배열하여 응력을 2중으로 방어.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-3">
+                    <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold">2</div>
+                    <h4 class="font-bold text-white text-sm">Z축 기계적 앵커 홈 (Trench)</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        상부 칩 모서리 바닥에 **미세 홈(Trench)**을 파서 NCF 풀이 굳을 때 쐐기처럼 박히도록 만들어 Z축 들림 고정.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-3">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">3</div>
+                    <h4 class="font-bold text-white text-sm">유선형 Arc 가드링 마스크</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        칩 내부 회로 보호용 가드링(Guard Ring) 배선도 모서리의 곡률과 동일하게 유선형으로 설계하여 마스크 통합 특허화.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: Conclusion & Summary -->
+        <div class="slide flex-col justify-center items-center text-center space-y-6 max-w-4xl mx-auto">
+            <div class="inline-block px-4 py-1.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full text-sm font-semibold">
+                🎉 발표 요약 및 기대 효과
+            </div>
+            <h3 class="text-3xl md:text-4xl font-extrabold text-white">
+                "X-Y 라운딩은 HBM Z축 박리를 막는<br>가장 강력한 수리역학적 방어막입니다"
+            </h3>
+
+            <div class="p-6 bg-slate-900/90 border border-slate-800 rounded-2xl text-left space-y-4 max-w-2xl w-full">
+                <div class="flex items-start gap-3">
+                    <span class="text-emerald-400 font-bold">✔</span>
+                    <span class="text-sm text-slate-200"><b>Z축 Peeling 응력 65% 감소</b>로 16층 이상 차세대 HBM 수율 향상</span>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-emerald-400 font-bold">✔</span>
+                    <span class="text-sm text-slate-200"><b>Corner Void Zero</b>로 고온 열충격 시험(TC Test) 신뢰성 통과</span>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-emerald-400 font-bold">✔</span>
+                    <span class="text-sm text-slate-200"><b>특허 청구항 원안 보유</b>로 경쟁사 패키징 회피 설계 차단</span>
+                </div>
+            </div>
+
+            <p class="text-slate-400 text-sm">감사합니다. 특허 출원서 및 명세서 작성을 진행합니다.</p>
+        </div>
+
+    </main>
+
+    <!-- Bottom Navigation Footer Controls -->
+    <footer class="flex justify-between items-center border-t border-slate-800 pt-4">
+        <button id="prevBtn" onclick="changeSlide(-1)" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold transition disabled:opacity-30 disabled:cursor-not-allowed">
+            ⬅ 이전 슬라이드
+        </button>
+        
+        <div class="flex gap-1.5" id="slideDots">
+            <!-- Dynamic dots inserted by JS -->
+        </div>
+
+        <button id="nextBtn" onclick="changeSlide(1)" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition shadow-lg shadow-indigo-600/30">
+            다음 슬라이드 ➡
+        </button>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('totalSlideNum').innerText = totalSlides;
+
+        // Initialize Dots
+        const dotsContainer = document.getElementById('slideDots');
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = `w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${i === 0 ? 'bg-indigo-500 w-6' : 'bg-slate-700'}`;
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        }
+
+        function updateSlideUI() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            document.getElementById('currentSlideNum').innerText = currentSlide + 1;
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+
+            const nextBtn = document.getElementById('nextBtn');
+            if (currentSlide === totalSlides - 1) {
+                nextBtn.innerText = "처음으로 🔄";
+            } else {
+                nextBtn.innerText = "다음 슬라이드 ➡";
+            }
+
+            // Update dots
+            const dots = dotsContainer.children;
+            for (let i = 0; i < dots.length; i++) {
+                if (i === currentSlide) {
+                    dots[i].className = 'w-6 h-2.5 rounded-full bg-indigo-500 transition-all';
+                } else {
+                    dots[i].className = 'w-2.5 h-2.5 rounded-full bg-slate-700 transition-all';
+                }
+            }
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = 0;
+            }
+            updateSlideUI();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlideUI();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') {
+                changeSlide(1);
+            } else if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            }
+        });
+    </script>
+</body>
+</html>
+```
